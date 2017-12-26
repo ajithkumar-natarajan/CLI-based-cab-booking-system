@@ -1,46 +1,54 @@
-package com.zoho.cabbookingsystem;
+package com.zoho.cabbookingsystemv2;
 
 import java.util.HashMap;
-import java.util.Scanner;
 
-	public class PrimeCab{
+public class PrimeCab extends Cab{
 
-//	private int driverCount = 0;
-	private Location primeCabDrivers = new Location();
-//	private Location driver_2 = new Location();
-//	private Location driver_3 = new Location();
-//	private Location driver_4 = new Location();
+	private int noOfSeats = 6;
+	private int ratePerKM = 10;
+	private int averageKMpH = 60;
+	private int noOfDriversAvailable = 3;
+	private HashMap<Integer,Cab> driverIndex = new HashMap<Integer,Cab>();
+	private Cab Driver_1 = new Cab();
+	private Cab Driver_2 = new Cab();
+	private Cab Driver_3 = new Cab();
 	
-//	private HashMap<String,Location> primeCabDrivers = new HashMap<String,Location>();
-	
-//	Scanner read = new Scanner(System.in);
-	
-	public void getDriverLocations() {
-//		public void setDriverLocations() {
-			primeCabDrivers.setLocation(10, 15);
-//			driverCount++;
-			primeCabDrivers.setLocation(18, 12);
-//			driverCount++;
-			primeCabDrivers.setLocation(8, 21);
-//			driverCount++;
-			primeCabDrivers.setLocation(13, 14);
-//			driverCount++;
-//			System.out.println(primeCabDrivers.driverCount());
-//		} 
+	public PrimeCab() {
+//		Driver_1.setCabLocation(16, 26);
+		Driver_1.setCabLocation(10, 15);
+		driverIndex.put(driverIndex.size()+1, Driver_1);
+		Driver_2.setCabLocation(15, 1);
+		driverIndex.put(driverIndex.size()+1, Driver_2);
+		Driver_3.setCabLocation(20, 20);
+		driverIndex.put(driverIndex.size()+1, Driver_3);
 	}
 	
+	public Location readPrimeCabLocations(int index) {
+		Cab value = driverIndex.get(index);
+		return value.readLocation(value);
+	}
 	
+	public int readLocationX(Location obj) {
+		return obj.readLocationX(obj);
+	}
+	
+	public int readLocationY(Location obj) {
+		return obj.readLocationY(obj);
+	}
 	
 	public int getDriverCount() {
-		return primeCabDrivers.driverCount();
+		return noOfDriversAvailable;
 	}
 	
-    
-//    public void displayDriverDetails() {
-//    	driver_1.driverDetailDisp();
-//    }
-//    
-//    public String currentLocation(String Driver) {
-//		return driver_1.getCurrentLocation(Driver);
-//	}
+	public int readSeatAvailability() {
+		return noOfSeats;
+	}
+	
+	public int getRatePerKM() {
+		return ratePerKM;
+	}
+	
+	public int getAverageSpeed() {
+		return averageKMpH;
+	}
 }

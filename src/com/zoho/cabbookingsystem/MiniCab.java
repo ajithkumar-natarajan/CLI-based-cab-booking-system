@@ -1,46 +1,57 @@
-package com.zoho.cabbookingsystem;
+package com.zoho.cabbookingsystemv2;
 
 import java.util.HashMap;
-import java.util.Scanner;
 
-	public class MiniCab{
+public class MiniCab extends Cab{
 
-//	private int driverCount = 0;
-	private Location miniCabDrivers = new Location();
-//	private Location driver_2 = new Location();
-//	private Location driver_3 = new Location();
-//	private Location driver_4 = new Location();
+	private int noOfSeats = 4;
+	private int ratePerKM = 8;
+	private int averageKMpH = 45;
+	private int noOfDriversAvailable = 4;
+	private HashMap<Integer,Cab> driverIndex = new HashMap<Integer,Cab>();
+	private Cab Driver_1 = new Cab();
+	private Cab Driver_2 = new Cab();
+	private Cab Driver_3 = new Cab();
+	private Cab Driver_4 = new Cab();
 	
-//	private HashMap<String,Location> miniCabDrivers = new HashMap<String,Location>();
-	
-//	Scanner read = new Scanner(System.in);
-	
-	public void getDriverLocations() {
-//		public void setDriverLocations() {
-			miniCabDrivers.setLocation(10, 15);
-//			driverCount++;
-			miniCabDrivers.setLocation(18, 12);
-//			driverCount++;
-			miniCabDrivers.setLocation(8, 21);
-//			driverCount++;
-			miniCabDrivers.setLocation(13, 14);
-//			driverCount++;
-//			System.out.println(miniCabDrivers.driverCount());
-//		} 
+	public MiniCab() {
+//		Driver_1.setCabLocation(6, 19);
+		Driver_1.setCabLocation(10, 15);
+		driverIndex.put(driverIndex.size()+1, Driver_1);
+		Driver_2.setCabLocation(29, 12);
+		driverIndex.put(driverIndex.size()+1, Driver_2);
+		Driver_3.setCabLocation(24, 21);
+		driverIndex.put(driverIndex.size()+1, Driver_3);
+		Driver_4.setCabLocation(8, 1);
+		driverIndex.put(driverIndex.size()+1, Driver_4);
 	}
 	
+	public Location readMiniCabLocations(int index) {
+		Cab value = driverIndex.get(index);
+		return value.readLocation(value);
+	}
 	
+	public int readLocationX(Location obj) {
+		return obj.readLocationX(obj);
+	}
+	
+	public int readLocationY(Location obj) {
+		return obj.readLocationY(obj);
+	}
 	
 	public int getDriverCount() {
-		return miniCabDrivers.driverCount();
+		return noOfDriversAvailable;
 	}
 	
-    
-//    public void displayDriverDetails() {
-//    	driver_1.driverDetailDisp();
-//    }
-//    
-//    public String currentLocation(String Driver) {
-//		return driver_1.getCurrentLocation(Driver);
-//	}
+	public int readSeatAvailability() {
+		return noOfSeats;
+	}
+	
+	public int getRatePerKM() {
+		return ratePerKM;
+	}
+	
+	public int getAverageSpeed() {
+		return averageKMpH;
+	}
 }
